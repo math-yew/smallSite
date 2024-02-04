@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.79.0">
+    <title class="changeable">Small Site</title>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVYq1vxVIjV33mzwxTsBDRH5ywwvwVy_s&callback=initMap&libraries=&v=weekly"
+      defer
+    ></script>
+    <script>
+      function initMap() {
+        const uluru = { lat: -25.344, lng: 131.036 };
+        const map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 4,
+          center: uluru,
+        });
+        const marker = new google.maps.Marker({
+          position: uluru,
+          map: map,
+        });
+      }
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/carousel/">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+
+
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Small Site</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item active">
+              <a class="nav-link" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#first">First</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#second">Second</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#third">Third</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#fourth">Fourth</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#fifth">Fifth</a>
+            </li>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#sixth">Sixth</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <div class="container-fluid full-width">
+
+        <div class="section row center gray mountain picture eighty">
+          <div class="col-12 center white">
+            <h1>THIS IS THE TITLE</h1>
+            <h2>THIS IS THE SUBTITLE</h2>
+          </div>
+        </div>
+
+        <div class="section row" id="first">
+          <div class="col-sm-6 blue center pad">
+            <h1>THIS IS THE TITLE</h1>
+            <h2>THIS IS THE SUBTITLE</h2>
+          </div>
+          <div class="col-sm-6 red center pad">
+            <h1>THIS IS THE TITLE</h1>
+            <h2>THIS IS THE SUBTITLE</h2>
+          </div>
+        </div>
+
+        <div class="section row center gray path fixed pad" id="second">
+          <div class="col-12 center">
+            <h1>THIS IS THE TITLE</h1>
+            <h2>THIS IS THE SUBTITLE</h2>
+          </div>
+        </div>
+
+        <div class="section row" id="third">
+          <div class="col-sm-4 gray center pad">
+            <h1>THIS IS THE TITLE</h1>
+            <h2>THIS IS THE SUBTITLE</h2>
+          </div>
+          <div class="col-sm-4 blue center pad">
+            <h1>THIS IS THE TITLE</h1>
+            <h2>THIS IS THE SUBTITLE</h2>
+          </div>
+          <div class="col-sm-4 red center pad">
+            <div class="title">
+              <h1>THIS IS THE TITLE</h1>
+              <h2>THIS IS THE SUBTITLE</h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="section row" style="padding:0vw 10vw" id="fourth">
+          <div class="col-sm-4 gray center pad">
+            <h1 from-left">Hi THIS IS THE TITLE</h1>
+            <h2>THIS IS THE SUBTITLE</h2>
+            <p class="animate" id="p1">Hello there.  May this appear.</p>
+          </div>
+          <div class="col-sm-4 blue center pad">
+            <h1>THIS IS THE TITLE</h1>
+            <h2>THIS IS THE SUBTITLE</h2>
+          </div>
+          <div class="col-sm-4 red center pad">
+            <h1>THIS IS THE TITLE</h1>
+            <h2>THIS IS THE SUBTITLE</h2>
+            <p class="animate" id="p2">Hello there.  May this appear.</p>
+          </div>
+        </div>
+
+        <div class="section row squeeze" id="fifth">
+          <div class="col-sm-4 center">
+            <div class="rectangle center">
+              <h2>THIS IS THE TITLE</h2>
+              <p>This is the paragraph</p>
+            </div>
+          </div>
+          <div class="col-sm-4 center">
+            <div class="rectangle center">
+              <h2>THIS IS THE TITLE</h2>
+              <p>This is the paragraph</p>
+            </div>
+          </div>
+          <div class="col-sm-4 center">
+            <div class="rectangle center">
+              <h2>THIS IS THE TITLE</h2>
+              <p>This is the paragraph</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="section row center gray fade-path fixed eighty" id="sixth">
+          <div class="col-12 center">
+            <h1>Map
+            </h1>
+            <a href="https://developers.google.com/maps/documentation/javascript/adding-a-google-map#maps_add_map-html" target="#">Instructions</a>
+            <div id="map"></div>
+          </div>
+        </div>
+
+      </div>
+
+    </main>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="./script.js" type="text/javascript"></script>
+
+  </body>
+</html>

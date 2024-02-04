@@ -13,29 +13,31 @@
       async function getFile() {
         const response = await octokit.request('GET /repos/{owner}/{repo}/contents/{path}', {
           owner: 'math-yew',
-          repo: 'browser-scripts',
-          path: 'content.json'
+          repo: 'smallSite',
+          path: 'content.js',
+          ref: 'gh-pages'
         });
         // console.log("response: " + JSON.stringify(response));
         let status = response.status;
         sha = response.data.sha;
         console.log("sha: " + sha);
         let content = atob(response.data.content);
+        content = content.replace(/^.+=\s/,"");
         obj = JSON.parse(content);
         console.log("title: " + obj.title);
         prep();
       }
-      let str = '{"title": "chicken","description": "fries"}';
       let newStr;
 
       async function putFile() {
         let newContent = btoa(newStr);
         const response = await octokit.request('PUT /repos/{owner}/{repo}/contents/{path}', {
           owner: 'math-yew',
-          repo: 'browser-scripts',
+          repo: 'smallSite',
           sha: sha,
-          path: 'content.json',
-          message: 'api added',
+          path: 'content.js',
+          branch: 'gh-pages',
+          message: 'content update',
           content: newContent
         })
         console.log("response: " + JSON.stringify(response));
@@ -59,15 +61,58 @@
           newObj[arr[i].id] = arr[i].value;
         }
         newStr = JSON.stringify(newObj);
+        newStr = "export let content = " + newStr;
         console.log("newObj: " + newStr);
         putFile();
       }
+
+      document.getElementById('add').addEventListener("click",()=>upload());
+
+      let base64;
+      let picName;
+      function upload(){
+        var file    = document.querySelector('#photoUpload').files[0];
+        picName = file.name;
+        console.log("name: " + picName);
+        const reader = new FileReader();
+        reader.addEventListener("load", function () {
+
+          base64 = reader.result
+            .replace('data:', '')
+            .replace(/^.+,/, '');
+          console.log("base64: " + base64);
+          uploadPic();
+        }, false);
+        if (file) {
+          reader.readAsDataURL(file);
+        }
+      }
+
+      async function uploadPic() {
+        const response = await octokit.request('PUT /repos/{owner}/{repo}/contents/{path}', {
+          owner: 'math-yew',
+          repo: 'smallSite',
+          sha: sha,
+          path: 'pictures/' + picName,
+          branch: 'gh-pages',
+          message: 'photo added',
+          content: base64
+        })
+        console.log("response: " + JSON.stringify(response));
+      }
+
     </script>
   </head>
   <body>
+    <a href="https://math-yew.github.io/smallSite/">small site</a>
     <button type="button" name="button" id="get">GET</button>
     <button type="button" name="button" id="put">PUT</button>
     <div id="changes"></div>
-    <script src="remoteData.js" type="text/javascript"></script>
+    <div class="section">
+      <p>Upload:</p>
+      <input type="file" id="photoUpload"/>
+      <button type="button" name="button" id="add">Add</button>
+    </div>
+    <!-- <script src="remoteData.js" type="text/javascript"></script> -->
   </body>
 </html>
